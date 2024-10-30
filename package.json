@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/MatheusSantos360/logfy-x/issues"
   },
-  "homepage": "https://github.com/MatheusSantos360/logfy-x#readme"
+  "homepage": "https://github.com/MatheusSantos360/logfy-x#readme",
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
 }
