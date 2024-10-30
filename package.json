@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/MatheusSantos360/logfy-x#readme",
   "devDependencies": {
+    "@changesets/cli": "^2.27.9",
     "@eslint/js": "^9.13.0",
     "eslint": "^9.13.0",
     "globals": "^15.11.0",
