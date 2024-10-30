@@ -1,0 +1,26 @@
+{
+  "name": "logfy-x",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatheusSantos360/logfy-x.git"
+  },
+  "keywords": [
+    "nodejs",
+    "log",
+    "logfy",
+    "logfy-x",
+    "terminal"
+  ],
+  "author": "Matheus dos Santos Paixão <matheusworkcontact@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MatheusSantos360/logfy-x/issues"
+  },
+  "homepage": "https://github.com/MatheusSantos360/logfy-x#readme"
+}
