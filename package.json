@@ -6,6 +6,7 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
+    "lint": "eslint",
     "build": "tsup src/index.ts --format cjs,esm --dts"
   },
   "repository": {
@@ -26,7 +27,11 @@
   },
   "homepage": "https://github.com/MatheusSantos360/logfy-x#readme",
   "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "eslint": "^9.13.0",
+    "globals": "^15.11.0",
     "tsup": "^8.3.5",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.12.2"
   }
 }
