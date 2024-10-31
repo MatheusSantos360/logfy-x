@@ -1,5 +1,6 @@
-src/
-.github/
 .changeset/
-tsconfig.json
+.github/
+tests/
+src/
 eslint.config.mjs
+tsconfig.json
