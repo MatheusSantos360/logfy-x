@@ -1,3 +1,3 @@
-export const add = (a: number, b: number) => {
-  return a + b
-}
+import logfy from './functions/logfy';
+export default logfy;
+export * from './functions';
