@@ -37,5 +37,8 @@
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.12.2",
     "vitest": "^2.1.4"
+  },
+  "dependencies": {
+    "picocolors": "^1.1.1"
   }
 }
