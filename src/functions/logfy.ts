@@ -2,9 +2,10 @@ import { options } from "../types/logfy.types";
 import pico from "picocolors";
 import toCamelCase from "./utils/toCamelCase";
 
+// eslint-disable-next-line
 const logfy = (content: any, options?: options): void => {
   if (options?.style) {
-    let style = options.style.split(" ");
+    const style = options.style.split(" ");
     const styles: string[] = [];
 
     for (let i = 0; i < style.length; i++) {
