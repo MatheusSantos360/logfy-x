@@ -1,6 +1,4 @@
 export interface options {
-  values?: values
+  values?: any,
   style?: string
 }
-
-type values = string | string[] | number | number[] | boolean | boolean[]
