@@ -1,5 +1,11 @@
 # logfy-x
 
+## 0.0.4
+
+### Patch Changes
+
+- 8885cc5: Add the main function: logfy
+
 ## 0.0.3
 
 ### Patch Changes
