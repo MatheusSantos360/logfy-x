@@ -2,6 +2,13 @@ import { options } from "../types/logfy.types";
 import pico from "picocolors";
 import toCamelCase from "./utils/toCamelCase";
 
+/**
+ * Formats and logs the content with optional styles.
+ *
+ * @param {any} content - The content to be logged.
+ * @param {options} [options] - Optional settings for the log output, including style.
+ * @returns {void}
+ */
 // eslint-disable-next-line
 const logfy = (content: any, options?: options): void => {
   if (options?.style) {
