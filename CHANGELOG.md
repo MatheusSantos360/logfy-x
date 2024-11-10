@@ -1,5 +1,11 @@
 # logfy-x
 
+## 0.1.0
+
+### Minor Changes
+
+- 4eb2905: Implement the logfy() function to log styled text
+
 ## 0.0.4
 
 ### Patch Changes
