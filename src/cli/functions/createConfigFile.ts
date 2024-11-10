@@ -2,19 +2,20 @@ import { writeFile } from 'fs';
 import { configFileName } from '../config.json';
 import { ConfigFileExists } from './configFileExists';
 import path from 'path';
+import logfy, { bgGreen, bgRed, bold, green, red } from '../../index';
 
 export const createConfigFile = () => {
   if (ConfigFileExists()) {
-    console.log(`The Logfy-X config file (${configFileName}) already exists.`);
+    logfy(`${bgRed(" ❌ " + bold(`ALREADY EXISTS `))}\n${red(bold(">"))} The Logfy-X config file (${configFileName}) already exists.`, { style: "underline" });
     return
   }
 
   writeFile(path.join(process.cwd(), configFileName), '{}', (error) => {
     if (error) {
-      console.log(`Logfy-X config file not created: ${error.message}`)
+      logfy(`${bgRed(" ❌ " + bold(`ERROR `))}\n ${red(bold(">"))} Logfy-X config file created (${configFileName}): ${"error.message"}`, { style: "underline" });
       return
     }
 
-    console.log(`Logfy-X config file created (${configFileName}).`)
+    logfy(`${bgGreen(" 🎉 " + bold(`CREATED! `))}\n${green(bold(">"))} Logfy-X config file created (${configFileName}).`, { style: "underline"})
   });
 };
