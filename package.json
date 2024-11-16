@@ -15,7 +15,9 @@
     "cli": "tsx src/cli/index.ts",
     "lint": "eslint",
     "build": "tsup src/index.ts --format cjs,esm --dts && tsup src/cli/index.ts --format cjs --out-dir dist/cli",
-    "test": "vitest",
+    "test": "vitest --exclude tests/cli",
+    "test:cli": "vitest tests/cli",
+    "test:all": "vitest",
     "release": "pnpm run build && changeset publish",
     "verify": "pnpm run start && pnpm run lint && pnpm run test run && pnpm run build && rm -rf ./dist"
   },
