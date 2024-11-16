@@ -28,9 +28,6 @@ jobs:
       - name: Build project
         run: pnpm run build
 
-      - name: Create the package config file
-        run: pnpm run cli init
-
       - name: Run tests (package)
         run: pnpm run test
 
