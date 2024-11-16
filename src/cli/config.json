@@ -1,3 +1,6 @@
 {
-  "configFileName": "logfy-x.json"
+  "theme": {
+    "color": "white",
+    "background": "none"
+  }
 }

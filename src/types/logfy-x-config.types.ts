@@ -1,6 +1,6 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-export interface config {}
+export type config = z.infer<typeof configSchema>;
 
 const theme = z.object({
   color: z.string(),

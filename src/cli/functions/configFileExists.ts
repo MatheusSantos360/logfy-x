@@ -1,5 +1,5 @@
-import { readdirSync } from 'fs';
-import { configFileName } from '../config.json';
+import { readdirSync } from "fs";
+import { configFileName } from "../../types/config.json";
 
 export const ConfigFileExists = (): boolean => {
   const dir = readdirSync(process.cwd());
