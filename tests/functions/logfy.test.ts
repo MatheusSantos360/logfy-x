@@ -27,7 +27,7 @@ describe("logfy()", () => {
   test("Should to he console removing all the default styles", () => {
     const consoleSpy = vi.spyOn(console, "log").mockImplementation(() => {});
     const content = "Styled text";
-    const options = { style: "-red -bg-blue -bold" };
+    const options = { style: "-white" };
 
     logfy(content, options);
 

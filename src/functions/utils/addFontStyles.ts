@@ -1,5 +1,6 @@
 import picocolors from "picocolors";
 
+// eslint-disable-next-line
 export function addFontStyles(styles: string[], content: any) {
   const fontStyles = styles.filter((style) => !style.startsWith("bg"));
 

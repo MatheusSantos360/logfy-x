@@ -1,5 +1,6 @@
 import picocolors from "picocolors";
 
+// eslint-disable-next-line
 export function addBgStyles(styles: string[], content: any) {
   const bgStyles = styles.filter((style) => style.startsWith("bg"));
   bgStyles.forEach((style) => {
@@ -8,6 +9,6 @@ export function addBgStyles(styles: string[], content: any) {
       content = styleFunction(content);
     }
   });
-  
+
   return content;
 }
