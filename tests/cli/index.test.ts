@@ -1,10 +1,9 @@
-import { execSync } from "child_process";
 import { describe, expect, test } from "vitest";
 import { version } from "../../package.json";
+import { program } from "../../src/cli/cli";
 
-describe("CLI Tests", () => {
+describe("CLI Test", () => {
   test("Should display version", () => {
-    const output = execSync("pnpm run cli --version").toString();
-    expect(output.trim().includes(version)).toBeTruthy();
+    expect(program.version()).toBe(version);
   });
 });
