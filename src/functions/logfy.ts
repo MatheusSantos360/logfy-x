@@ -1,6 +1,7 @@
-import pico from "picocolors";
 import { getConfig } from "../cli/functions/logfy-config";
 import { options } from "../types/logfy.types";
+import { addBgStyles } from "./utils/addBgStyles";
+import { addFontStyles } from "./utils/addFontStyles";
 import { styleConfig } from "./utils/styleConfig";
 import toCamelCase from "./utils/toCamelCase";
 
@@ -58,22 +59,10 @@ const logfy = (content: any, options?: options): void => {
 
   let newContent = content;
 
-  const otherStyles = styles.filter((style) => !style.startsWith("bg"));
-  otherStyles.forEach((style) => {
-    const styleFunction = pico[style as keyof typeof pico];
-    if (styleFunction && typeof styleFunction === "function") {
-      newContent = styleFunction(newContent);
-    }
-  });
+  newContent = addFontStyles(styles, newContent);
 
-  const bgStyles = styles.filter((style) => style.startsWith("bg"));
-  bgStyles.forEach((style) => {
-    const styleFunction = pico[style as keyof typeof pico];
-    if (styleFunction && typeof styleFunction === "function") {
-      newContent = styleFunction(newContent);
-    }
-  });
-  
+  newContent = addBgStyles(styles, newContent);
+
   console.log(newContent);
 };
 
