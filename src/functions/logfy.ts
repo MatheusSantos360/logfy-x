@@ -69,3 +69,4 @@ const logfy = (content: any, options?: options): void => {
 export default logfy;
 
 // test - refactor
+// ! - new colors

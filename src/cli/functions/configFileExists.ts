@@ -6,4 +6,3 @@ export const ConfigFileExists = (): boolean => {
   return existsSync(path.resolve(process.cwd(), configFileName));
 };
 
-// test
