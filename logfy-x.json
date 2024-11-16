@@ -1,7 +1,7 @@
 {
   "theme": {
-    "color": "red",
+    "color": "white",
     "background": "none",
-    "font": "bold"
+    "font": "none"
   }
 }

@@ -73,8 +73,7 @@ const logfy = (content: any, options?: options): void => {
       newContent = styleFunction(newContent);
     }
   });
-
-  console.log(styles);
+  
   console.log(newContent);
 };
 
