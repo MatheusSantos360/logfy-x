@@ -4,3 +4,5 @@ export function getNestedValue(obj: any, keys: string[]): any {
     return acc && acc[key] !== undefined ? acc[key] : undefined;
   }, obj);
 }
+
+// test

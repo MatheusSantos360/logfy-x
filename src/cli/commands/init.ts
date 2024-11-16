@@ -18,3 +18,5 @@ export const init = () => {
 
   console.log(underline(`\n${bgGreen(" 🎉 " + bold(`CREATED! `))}\n${green(bold("  >"))} Logfy-X config file created (${configFileName}).\n`));
 };
+
+// tested

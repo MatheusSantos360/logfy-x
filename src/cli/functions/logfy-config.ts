@@ -29,3 +29,5 @@ function getConfig(): config {
 }
 
 export { getConfig };
+
+// test

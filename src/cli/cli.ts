@@ -13,3 +13,5 @@ program.command("init").action(() => {
 });
 
 export { program };
+
+// tested

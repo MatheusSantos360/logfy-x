@@ -5,3 +5,5 @@ import { configFileName } from "../../../package.json";
 export const ConfigFileExists = (): boolean => {
   return existsSync(path.resolve(process.cwd(), configFileName));
 };
+
+// test
