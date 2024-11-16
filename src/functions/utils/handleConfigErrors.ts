@@ -6,7 +6,7 @@ export const handleConfigErrors = (parseErrors: ZodIssue[]) => {
   const errors: string[] = [];
 
   parseErrors.forEach((error) => {
-    let propertyPath = error.path.join('.'); // Para lidar com propriedades aninhadas
+    const propertyPath = error.path.join('.'); // Para lidar com propriedades aninhadas
     let message = '';
 
     switch (error.code) {
