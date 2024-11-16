@@ -7,7 +7,7 @@ import { ConfigFileExists } from "./configFileExists";
 
 export const createConfigFile = () => {
   if (ConfigFileExists()) {
-    logfy(`${bgRed(`\n ❌ ${bold(`ALREADY EXISTS `)}`)}\n${red(bold("  >"))} The Logfy-X config file (${configFileName}) already exists.`, {
+    logfy(`\n${bgRed(` ❌ ${bold(`ALREADY EXISTS `)}`)}\n${red(bold("  >"))} The Logfy-X config file (${configFileName}) already exists.`, {
       style: "underline",
     });
     return;
@@ -15,12 +15,12 @@ export const createConfigFile = () => {
 
   writeFile(path.join(process.cwd(), configFileName), JSON.stringify(configFile, null, 2), (error) => {
     if (error) {
-      logfy(`${bgRed("\n ❌ " + bold(`ERROR `))}\n ${red(bold("  >"))} Logfy-X config file created (${configFileName}): ${"error.message"}`, {
+      logfy(`\n${bgRed("\n ❌ " + bold(`ERROR `))}\n ${red(bold("  >"))} Logfy-X config file created (${configFileName}): ${"error.message"}`, {
         style: "underline",
       });
       return;
     }
 
-    logfy(`${bgGreen("\n 🎉 " + bold(`CREATED! `))}\n${green(bold("  >"))} Logfy-X config file created (${configFileName}).`, { style: "underline" });
+    logfy(`\n${bgGreen(" 🎉 " + bold(`CREATED! `))} \n${green(bold("  >"))} Logfy-X config file created (${configFileName}).`, { style: "underline" });
   });
 };
