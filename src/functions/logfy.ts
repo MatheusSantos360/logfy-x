@@ -10,6 +10,7 @@ import toCamelCase from "./utils/toCamelCase";
  * @param {any} content - The content to be logged.
  * @param {options} [options] - Optional settings for the log output, including style.
  * @returns {void}
+ * 
  */
 // eslint-disable-next-line
 const logfy = (content: any, options?: options): void => {
@@ -60,8 +61,8 @@ const logfy = (content: any, options?: options): void => {
       newContent = styleFunction(newContent);
     }
   });
-  
-  console.log(styles)
+
+  console.log(styles);
   console.log(newContent);
 };
 
