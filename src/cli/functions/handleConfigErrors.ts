@@ -1,6 +1,5 @@
 import { ZodIssue } from "zod";
 import { configFileName } from "../../../package.json";
-import logfy from "../../functions/logfy";
 import { bgRed, blue, bold, red, underline } from "../../index";
 
 export const handleConfigErrors = (parseErrors: ZodIssue[]) => {
@@ -53,8 +52,8 @@ export const handleConfigErrors = (parseErrors: ZodIssue[]) => {
   });
 
   if (errors.length > 0) {
-    logfy(`${bgRed(" ❌ " + bold("ERROR "))} ${bold(red(configFileName))}`);
-    logfy(`${red(bold(">"))} Error(s) on ${configFileName}`);
-    errors.forEach((error) => logfy(`${red(bold("  >"))} ${error}`));
+    console.log(`${bgRed(" ❌ " + bold("ERROR "))} ${bold(red(configFileName))}`);
+    console.log(`${red(bold(">"))} Error(s) on ${configFileName}`);
+    errors.forEach((error) => console.log(`${red(bold("  >"))} ${error}`));
   }
 };
