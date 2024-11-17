@@ -2,7 +2,7 @@ import { describe, expect, test, vi } from "vitest";
 import logfy from "../../src";
 
 describe("logfy()", () => {
-  test("Should log to the console without style", () => {
+  test("Should log to the console with the default styles", () => {
     const consoleSpy = vi.spyOn(console, "log").mockImplementation(() => {});
     const content = "Hello World!";
 
