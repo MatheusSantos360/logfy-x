@@ -15,21 +15,21 @@ import toCamelCase from "./utils/toCamelCase";
 const logfy = (content: any, options?: options): void => {
   const config = getConfig();
   const configStyles = styleConfig(config);
-  
+
   let styles: string[] = [...configStyles.split(" ")];
-  
+
   styles = styles.filter((style) => style !== "none");
-  
+
   if (options?.style) {
     const style = options.style.split(" ");
-    
+
     style.forEach((styleItem) => {
       if (styleItem.startsWith("-")) {
         const styleToRemove = toCamelCase(styleItem.substring(1));
-        styles = styles.filter((s) => s !== styleToRemove);
+        styles = styles.filter((s) => toCamelCase(s) !== styleToRemove);
       }
     });
-    
+
     style.forEach((styleItem) => {
       if (!styleItem.startsWith("-")) {
         const convertedStyle = toCamelCase(styleItem);
@@ -37,31 +37,31 @@ const logfy = (content: any, options?: options): void => {
       }
     });
   }
-  
+
   const uppercase = /^[A-Z]/;
-  
+
   styles = styles.filter((style) => !style.match(uppercase));
   styles.reverse();
-  
+
   let newContent = content;
-  
-  const fontStyles = styles.filter((style) => !style.startsWith("bg"));
-  fontStyles.forEach((style) => {
+
+  const otherStyles = styles.filter((style) => !style.startsWith("bg"));
+  otherStyles.forEach((style) => {
     const styleFunction = pico[style as keyof typeof pico];
     if (styleFunction && typeof styleFunction === "function") {
       newContent = styleFunction(newContent);
     }
   });
-  
-  const bgStyles = styles.filter((style) => style.startsWith("bg"))
+
+  const bgStyles = styles.filter((style) => style.startsWith("bg"));
   bgStyles.forEach((style) => {
-    style = toCamelCase(style)
     const styleFunction = pico[style as keyof typeof pico];
     if (styleFunction && typeof styleFunction === "function") {
       newContent = styleFunction(newContent);
     }
   });
   
+  console.log(styles)
   console.log(newContent);
 };
 
