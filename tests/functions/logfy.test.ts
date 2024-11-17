@@ -1,24 +1,26 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, expect, test, vi } from "vitest";
 import logfy from "../../src";
 
-describe("logfy", () => {
-  it("Should log to the console without style", () => {
-    const consoleSpy = vi.spyOn(console, "log").mockImplementation(() => {})
-    const content = "Hello World!"
+describe("logfy()", () => {
+  test("Should log to the console without style", () => {
+    const consoleSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+    const content = "Hello World!";
 
     logfy(content);
-    expect(consoleSpy).toHaveBeenCalledWith(content)
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining(content));
 
-    consoleSpy.mockRestore()
-  })
+    consoleSpy.mockRestore();
+  });
 
-  it("Should log to the console with styles", () => {
-    const consoleSpy = vi.spyOn(console, "log").mockImplementation(() => {})
-    const content = "Styled text"
-    const options = { style: "green bg-red bold underline" }
+  test("Should log to the console with styles", () => {
+    const consoleSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+    const content = "Styled text";
+    const options = { style: "green bg-red bold underline" };
 
-    logfy(content, options)
+    logfy(content, options);
 
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining("Styled text"))
-  })
-})
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining(content));
+
+    consoleSpy.mockRestore();
+  });
+});

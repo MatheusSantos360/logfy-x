@@ -1,6 +1,7 @@
 {
   "theme": {
     "color": "white",
-    "background": "none"
+    "background": "none",
+    "font": "none"
   }
 }

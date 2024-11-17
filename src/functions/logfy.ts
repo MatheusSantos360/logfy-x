@@ -1,5 +1,7 @@
-import { options } from "../types/logfy.types";
 import pico from "picocolors";
+import { getConfig } from "../cli/functions/logfy-config";
+import { options } from "../types/logfy.types";
+import { styleConfig } from "./utils/styleConfig";
 import toCamelCase from "./utils/toCamelCase";
 
 /**
@@ -11,44 +13,56 @@ import toCamelCase from "./utils/toCamelCase";
  */
 // eslint-disable-next-line
 const logfy = (content: any, options?: options): void => {
+  const config = getConfig();
+  const configStyles = styleConfig(config);
+  
+  let styles: string[] = [...configStyles.split(" ")];
+  
+  styles = styles.filter((style) => style !== "none");
+  
   if (options?.style) {
     const style = options.style.split(" ");
-    const styles: string[] = [];
-
-    for (let i = 0; i < style.length; i++) {
-      const convertedStyle = toCamelCase(style[i]!);
-      if (convertedStyle !== undefined) {
+    
+    style.forEach((styleItem) => {
+      if (styleItem.startsWith("-")) {
+        const styleToRemove = toCamelCase(styleItem.substring(1));
+        styles = styles.filter((s) => s !== styleToRemove);
+      }
+    });
+    
+    style.forEach((styleItem) => {
+      if (!styleItem.startsWith("-")) {
+        const convertedStyle = toCamelCase(styleItem);
         styles.push(convertedStyle);
       }
-    }
-
-    let newContent = content;
-
-    for (let i = 0; i < styles.length; i++) {
-      if (styles[i] && styles[i]?.startsWith("bg")) {
-        continue;
-      }
-      const styleFunction = pico[styles[i] as keyof typeof pico];
-      if (styleFunction && typeof styleFunction === 'function') {
-        newContent = styleFunction(newContent);
-      }
-    }
-
-    // Apply background colors next
-    for (let i = 0; i < styles.length; i++) {
-      if (styles[i] && !styles[i]?.startsWith("bg")) {
-        continue;
-      }
-      const styleFunction = pico[styles[i] as keyof typeof pico];
-      if (styleFunction && typeof styleFunction === 'function') {
-        newContent = styleFunction(newContent);
-      }
-    }
-
-    console.log(newContent);
-  } else {
-    console.log(content);
+    });
   }
+  
+  const uppercase = /^[A-Z]/;
+  
+  styles = styles.filter((style) => !style.match(uppercase));
+  styles.reverse();
+  
+  let newContent = content;
+  
+  const fontStyles = styles.filter((style) => !style.startsWith("bg"));
+  fontStyles.forEach((style) => {
+    const styleFunction = pico[style as keyof typeof pico];
+    if (styleFunction && typeof styleFunction === "function") {
+      newContent = styleFunction(newContent);
+    }
+  });
+  
+  const bgStyles = styles.filter((style) => style.startsWith("bg"))
+  bgStyles.forEach((style) => {
+    style = toCamelCase(style)
+    const styleFunction = pico[style as keyof typeof pico];
+    if (styleFunction && typeof styleFunction === "function") {
+      newContent = styleFunction(newContent);
+    }
+  });
+  
+  console.log(newContent);
 };
 
 export default logfy;
