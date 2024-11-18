@@ -281,3 +281,64 @@ Error("Critical Errors",
       > Review recent changes
         > Revert to previous version if necessary
 ```
+
+### 6. Success Logs
+
+**Description**: Displays success logs with visual highlights to celebrate successful operations during program execution.
+
+**Features**:
+- **Success Log**:
+  - Adds a ✅ emoji next to the title.
+  - Displays the title in bold and green, followed by the content with automatic indentation.
+  - Adds new lines and indentation based on the specified ">" symbols, replacing them with "  > ".
+
+**Function Declaration**:
+```typescript
+Success(title: string, ...messages: string[]): void;
+```
+
+**Examples**:
+```javascript
+import { Success } from "logfy-x";
+
+// Example 1: Single Item
+Success("Deployment Complete", "The application was successfully deployed.");
+
+// Example 2: Three Items
+Success("Data Processing", "Data was successfully processed.", "Backup created.", "Notifications sent to users.");
+
+// Example 3: Complex Indentation
+Success("Project Milestones Achieved",
+  "Phase 1 completed",
+  "> Requirements gathered",
+  ">> Stakeholders approved",
+  "> Development completed",
+  ">> Code reviewed and merged",
+  ">>> Tests passed",
+  "Phase 2 started",
+  "> Sprint planning done",
+  "> Tasks assigned"
+);
+```
+
+**Output**:
+```
+(<bg-green, bold> "✅ SUCCESS ") (<green> Deployment Complete)
+  > The application was successfully deployed.
+
+(<bg-green, bold> "✅ SUCCESS ") (<green> Data Processing)
+  > Data was successfully processed.
+  > Backup created.
+  > Notifications sent to users.
+
+(<bg-green, bold> "✅ SUCCESS ") (<green> Project Milestones Achieved)
+  > Phase 1 completed
+  > Requirements gathered
+    > Stakeholders approved
+  > Development completed
+    > Code reviewed and merged
+      > Tests passed
+  > Phase 2 started
+  > Sprint planning done
+  > Tasks assigned
+```
