@@ -1,221 +1,283 @@
-# 🚀 Logfy-X: Log into the terminal in a beautiful, organized, easy, and pleasant way
+# 🚀 Logfy-X: Logs Generating Fantastic eXperiences
+Transform Your Terminal Logs with Style and Precision
 
-The goal of this package is to make logging in the terminal easier, nice, organized, and pleasant, especially during development or production. Developers frequently log in their terminals to see real-time behavior. With Logfy-X, this can be done in a colorful and structured manner, reducing the monotony of plain text logs. Logfy-X offers features such as:
+Logfy-X is a powerful terminal logging tool designed to make logging easier, organized, and pleasant, both during development and production. With Logfy-X, developers can view real-time behavior in a colorful and structured way, reducing the monotony of plain text logs.
 
-- 🎨 **Stylized/Pretty text log**: Color, background color, text style, transform to upper/lower case, and more.
-- 📊 **Display of values/variables**: Display values or variables beautifully and easily.
-- 😀 **Emoji logs**: Log emojis on the terminal with ease.
-- ⏱️ **Latency and debug logs**: Efficiently manage latency and debugging.
-- 🔍 **Info/Warn/Error logs management**:
-  - 💡 **Info logs**: Display an information log with an 💡 emoji and blue text.
-  - ⚠️ **Warn logs**: Display a warning log with a ⚠️ emoji and yellow text.
-  - ❌ **Error logs**: Display an error log with a ❌ emoji and red text (errors exit the program by default).
-- 📝 **Alignment**: Align logged contents easily.
-- 🎨 **Themes**: Logfy-X includes ready-to-use themes for quick configuration.
-- 🔧 **Components**: Create and log terminal components that display information beautifully and can be customized.
-- 🌐 **Remote Logging**: Send logs to a remote server for centralized monitoring.
-- 🔍 **Log Filters**: Filter logs by level, tags, or other criteria.
-- 🛠️ **Custom Output Format**: Define custom formats for log outputs.
-- 🔄 **Log Rotation**: Implement log rotation to prevent excessively large log files.
-- ⚡ **Async Logging**: Log asynchronously to avoid blocking the main thread.
-- 📈 **Performance Metrics**: Log performance metrics like execution time and memory usage.
-- 🔒 **Audit Logs**: Record audit logs for user actions and data changes.
-- 📊 **Monitoring Integration**: Integrate with popular monitoring tools like Prometheus, Grafana, or ELK Stack.
+## Key Features
 
-### Components
-- 📊 **Table**
-- 📋 **List**
-- ◼️ **Square**
-- ⚪ **Circle**
-- ◻️ **Rectangle**
-- 🚀 **Progress bar**
-- 😀 **Emojis**
-- ➖ **Divider (horizontal line)**
+- 🎨 **Stylized/Pretty Text Log**: Customize text color, background color, text style, transform text to upper/lower case, and more. Logfy-X exports all functionalities of picocolors for even more customization.
+- 📊 **Displaying Values/Variables**: Present values or variables beautifully and easily in the terminal with syntax highlighting and customizable indentation.
+- 💡 **Info Logs**: Displays informative logs with visual highlights for easy identification of important information during program execution.
+- ⚠️ **Warn Logs**: Displays warning logs with visual highlights for easy identification of potential issues during program execution.
+- ❌ **Error Logs**: Displays error logs with visual highlights for easy identification of critical issues during program execution.
 
-### Customization Options
-- 🔢 **Fields quantity**
-- 🎨 **Background color**
-- 🎨 **Text color**
-- 📐 **Alignment**
+## Installation
 
-# Examples
-
-## Text Styling
-
-### Code:
-```javascript
-import logfy, { green, bg, bold, underline } from "logfy-x";
-
-// Text with simple styling
-logfy(green("It's a green text!"));
-logfy(bg.red("This text has a red background!"));
-logfy(bold("This text is bold."));
-logfy(underline("Text with underline."));
-
-// Combined styles
-logfy(bg.red(green(bold(underline("Logfy-X is very good!")))));
-
-// More readable code
-logfy("Logfy-X is very easy!", { style: "yellow bg-red bold underline" });
+To install Logfy-X, use npm:
+```bash
+npm install logfy-x
 ```
 
-## Info/Warn/Error Logs
-### Code:
-```javascript
-import { Info, Warn, Error } from "logfy-x";
+## Usage
 
-Info("Fix the data validation function.");
-Warn("Invalid data received.");
-Error("Something went wrong.");
-```
+### 1. Stylized/Pretty Text Log
 
-### Output:
-```
-💡 Info: Fix the data validation function.
-⚠️ Warn: Invalid data received.
-❌ Error: Something went wrong.
-```
+**Description**: Allows customizing the text color, background color, text style, and transforming text to uppercase/lowercase. Logfy-X exports all functionalities of picocolors for even more customization.
 
-## Displaying Values/Variables
-### Code:
-```javascript
-import { logValue } from "logfy-x";
-
-const user = { name: "John Doe", age: 30, job: "Developer" };
-logValue(user);
-
-// Better formatted output
-logValue(user, { style: "bold blue bg-white" });
-```
-
-## Logging Emojis
-### Code:
-```javascript
-import { logEmoji } from "logfy-x";
-
-logEmoji("rocket", "Launching the rocket!");
-logEmoji("tada", "Celebration time!");
-```
-
-## Latency and Debug
-### Code:
-```javascript
-import { logLatency, logDebug } from "logfy-x";
-
-// Measuring latency
-logLatency("Database query time:", async () => {
-  await db.query("SELECT * FROM users");
-});
-
-// Debugging
-logDebug("User data fetched:", user);
-```
-
-## Pre-defined Themes
-### Code:
-```javascript
-import logfy, { themes } from "logfy-x";
-
-// Using a theme
-logfy("Application started.", { theme: themes.success });
-logfy("Application error occurred.", { theme: themes.error });
-```
-
-## Components (Table, List, etc.)
-### Code:
-```javascript
-import { Table, List, ProgressBar } from "logfy-x";
-
-// Table
-const data = [
-  { name: "Alice", age: 25 },
-  { name: "Bob", age: 30 },
-];
-Table(data);
-
-// List
-const items = ["Item 1", "Item 2", "Item 3"];
-List(items, { style: "bold" });
-
-// Progress Bar
-ProgressBar(70, { width: 50, color: "green" });
-```
-
-## Custom Log Components
-### Code:
-```javascript
-import { logComponent, createComponent } from "logfy-x";
-
-// Custom component
-const myComponent = createComponent("My Custom Component", { style: "bold blue bg-white" });
-logComponent(myComponent, { content: "This is a custom log component." });
-```
-
-## Remote Logging
-### Code:
-```javascript
-import { logRemote } from 'logfy-x';
-
-logRemote('https://logserver.com', { message: 'Server started', level: 'info' });
-```
-
-## Log Filters
-### Code:
-```javascript
-import { setLogFilter, logInfo, logError } from 'logfy-x';
-
-setLogFilter({ level: 'info' });
-logInfo('This is an info log'); // Will be shown
-logError('This is an error log'); // Will be ignored
-```
-
-## Custom Output Format
-### Code:
+**Function Declaration**:
 ```typescript
-import { setLogFormat } from 'logfy-x';
-
-setLogFormat((level, message) => `[${new Date().toISOString()}] ${level.toUpperCase()}: ${message}`);
-logInfo('App started'); // Output: [2024-11-03T08:15:30Z] INFO: App started
+logfy(message: string, options?: { style?: string; }): void;
 ```
 
-## Log Rotation
-### Code:
-```typescript
-import { logRotate } from 'logfy-x';
+**Example**:
+```javascript
+import logfy, { bold, italic, underline, red, bgBlue } from "logfy-x";
 
-logRotate('app.log', { maxSize: '10M', maxFiles: 5 });
+// Using color names
+logfy("Text in red", { style: "red" });
+logfy("Text with blue background", { style: "bg-blue" });
+
+// Using hexadecimal codes
+logfy("Text in green", { style: "#00FF00" });
+logfy("Text with yellow background", { style: "bg-#FFFF00" });
+
+// Applying text styles
+logfy("Bold text", { style: "bold" });
+logfy("Italic text", { style: "italic" });
+logfy("Underlined text", { style: "underline" });
+
+// Using picocolors styles
+logfy(bold(red("Bold and red text")));
+logfy(bgBlue(underline("Underlined text with blue background")));
+
+// Transforming text
+logfy("Text in uppercase", { style: "uppercase" });
+logfy("TEXT IN LOWERCASE", { style: "lowercase" });
 ```
 
-## Async Logging
-### Code:
-```typescript
-import { logAsync } from 'logfy-x';
+### 2. Displaying Values/Variables
 
-await logAsync('Processing data...');
+**Description**: Allows presenting values or variables beautifully and easily in the terminal with syntax highlighting and customizable indentation.
+
+**Features**:
+
+- **Value Presentation**:
+  - Display values or variables in a stylized and organized way.
+- **Syntax Highlighting**:
+  - Colorize keys, values, arrays, strings, numbers, booleans, and null for improved readability.
+- **Custom Indentation**:
+  - Set custom indentation levels for better formatting.
+
+**Function Declaration**:
+```typescript
+code(value: any, options?: { indent?: number; }): void;
 ```
 
-## Performance Metrics
-### Code:
-```typescript
-import { logPerformance } from 'logfy-x';
+**Example Code**
 
-logPerformance(() => {
-  // Code you want to monitor
-});
+**Value Presentation with Syntax Highlighting and Indentation**:
+```javascript
+import { code } from "logfy-x";
+
+const user = { name: "John Doe", age: 30, job: "Developer", active: true, skills: ["JavaScript", "Node.js"], address: null };
+code(user, { indent: 4 });
 ```
 
-## Audit Logs
-### Code:
-```typescript
-import { logAudit } from 'logfy-x';
+### 3. Info Logs
 
-logAudit('User logged in', { userId: '12345' });
+**Description**: Displays informative logs with visual highlights for easy identification of important information during program execution.
+
+**Features**:
+- **Informative Log**:
+  - Adds a 💡 emoji next to the title.
+  - Displays the title in bold and blue, followed by the content with indentation.
+  - Automatically adds ">" before each message for consistent indentation.
+
+**Function Declaration**:
+```typescript
+Info(title: string, ...messages: string[]): void;
 ```
 
-## Monitoring Integration
-### Code:
-```typescript
-import { integrateWithMonitoring } from 'logfy-x';
+**Examples**:
+```javascript
+import { Info } from "logfy-x";
 
-integrateWithMonitoring('prometheus', { endpoint: 'http://prometheus:9090' });
+// Example 1: Single Item
+Info("Startup", "Application started");
+
+// Example 2: Three Items
+Info("Login", "User successfully logged in", "User profile loaded", "Dashboard initialized");
+
+// Example 3: Complex Indentation
+Info("System Overview",
+  "Initialization started",
+  "> Loading modules",
+  ">> Module A loaded",
+  ">> Module B loaded",
+  ">>> Submodule B1 started",
+  ">>> Submodule B2 started",
+  ">>>> Process B2-1 completed",
+  ">>>> Process B2-2 in progress",
+  "> Configuration applied",
+  ">> Network settings updated",
+  "Security checks",
+  "> Firewall enabled",
+  "> Antivirus enabled"
+);
+```
+
+**Output**:
+```
+(<bg-blue, bold> "💡 INFO ") (<blue> Startup)
+  > Application started
+
+(<bg-blue, bold> "💡 INFO ") (<blue> Login)
+  > User successfully logged in
+  > User profile loaded
+  > Dashboard initialized
+
+(<bg-blue, bold> "💡 INFO ") (<blue> System Overview)
+  > Initialization started
+  > Loading modules
+    > Module A loaded
+    > Module B loaded
+      > Submodule B1 started
+      > Submodule B2 started
+        > Process B2-1 completed
+        > Process B2-2 in progress
+  > Configuration applied
+    > Network settings updated
+  > Security checks
+  > Firewall enabled
+  > Antivirus enabled
+```
+
+### 4. Warn Logs
+
+**Description**: Displays warning logs with visual highlights for easy identification of potential issues during program execution.
+
+**Features**:
+- **Warning Log**:
+  - Adds a ⚠️ emoji next to the title.
+  - Displays the title in bold and yellow, followed by the content with indentation.
+  - Automatically adds ">" before each message for consistent indentation.
+
+**Function Declaration**:
+```typescript
+Warn(title: string, ...messages: string[]): void;
+```
+
+**Examples**:
+```javascript
+import { Warn } from "logfy-x";
+
+// Example 1: Single Item
+Warn("Low Disk Space", "Less than 10% of disk space remaining");
+
+// Example 2: Three Items
+Warn("API Limit", "Approaching API rate limit", "Current usage: 80%", "Threshold: 90%");
+
+// Example 3: Complex Indentation
+Warn("Performance Warnings",
+  "High memory usage detected",
+  "> Application X is using 80% of RAM",
+  ">> Possible memory leak",
+  ">> Investigate module Y",
+  ">>> Submodule Y1 may be causing issues",
+  "Disk space running low",
+  "> Only 5% of disk space remaining",
+  ">> Consider cleaning up old files",
+  ">>> Remove temporary files",
+  ">>> Archive old logs"
+);
+```
+
+**Output**:
+```
+(<bg-yellow, bold> "⚠️ WARN ") (<yellow> Low Disk Space)
+  > Less than 10% of disk space remaining
+
+(<bg-yellow, bold> "⚠️ WARN ") (<yellow> API Limit)
+  > Approaching API rate limit
+  > Current usage: 80%
+  > Threshold: 90%
+
+(<bg-yellow, bold> "⚠️ WARN ") (<yellow> Performance Warnings)
+  > High memory usage detected
+  > Application X is using 80% of RAM
+    > Possible memory leak
+    > Investigate module Y
+      > Submodule Y1 may be causing issues
+  > Disk space running low
+  > Only 5% of disk space remaining
+    > Consider cleaning up old files
+      > Remove temporary files
+      > Archive old logs
+```
+
+### 5. Error Logs
+
+**Description**: Displays error logs with visual highlights for easy identification of critical issues during program execution.
+
+**Features**:
+- **Error Log**:
+  - Adds a ❌ emoji next to the title.
+  - Displays the title in bold and red, followed by the content with indentation.
+  - Automatically adds ">" before each message for consistent indentation.
+
+**Function Declaration**:
+```typescript
+Error(title: string, ...messages: string[]): void;
+```
+
+**Examples**:
+```javascript
+import { Error } from "logfy-x";
+
+// Example 1: Single Item
+Error("Server Crash", "Unexpected server shutdown");
+
+// Example 2: Three Items
+Error("Database Error", "Failed to connect to database", "Connection timed out", "Retrying connection...");
+
+// Example 3: Complex Indentation
+Error("Critical Errors",
+  "Database connection failed",
+  "> Unable to connect to database server",
+  ">> Check network connection",
+  ">> Verify database server status",
+  ">>> Restart database service",
+  ">>> Check firewall settings",
+  "System crash detected",
+  "> Application Y crashed unexpectedly",
+  ">> Error code: 500",
+  ">>> Stack trace available",
+  ">>> Review recent changes",
+  ">>>> Revert to previous version if necessary"
+);
+```
+
+**Output**:
+```
+(<bg-red, bold> "❌ ERROR ") (<red> Server Crash)
+  > Unexpected server shutdown
+
+(<bg-red, bold> "❌ ERROR ") (<red> Database Error)
+  > Failed to connect to database
+  > Connection timed out
+  > Retrying connection...
+
+(<bg-red, bold> "❌ ERROR ") (<red> Critical Errors)
+  > Database connection failed
+  > Unable to connect to database server
+    > Check network connection
+    > Verify database server status
+      > Restart database service
+      > Check firewall settings
+  > System crash detected
+  > Application Y crashed unexpectedly
+    > Error code: 500
+      > Stack trace available
+      > Review recent changes
+        > Revert to previous version if necessary
 ```
