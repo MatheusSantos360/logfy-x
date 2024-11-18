@@ -342,3 +342,158 @@ Success("Project Milestones Achieved",
   > Sprint planning done
   > Tasks assigned
 ```
+
+### 7. Alignment Function
+
+**Description**: Allows you to align text to the left, center, or right within the terminal in a simple and straightforward way.
+
+**Function Declaration**:
+```typescript
+align(text: string, alignment: 'left' | 'center' | 'right', width?: number): string;
+```
+
+**Example Code**:
+```javascript
+// Import the alignment function
+import { align } from 'logfy-x';
+
+// Use the alignment function
+console.log(align("This message is left-aligned.", 'left'));
+console.log(align("This message is centered.", 'center'));
+console.log(align("This message is right-aligned.", 'right'));
+```
+
+**Output**:
+```
+This message is left-aligned.
+
+                         This message is centered.
+
+                                                         This message is right-aligned.
+```
+
+### 8. Latency Function
+
+**Description**: Measures and logs latency for different operations to help identify performance bottlenecks and optimize response times.
+
+**Function Declaration**:
+```typescript
+function latency(operationName: string, operation: () => void): void;
+```
+
+**Example Usage**:
+```javascript
+import { latency } from 'logfy-x';
+
+// Example of usage
+latency('Database Query', () => {
+  // Simulated operation
+});
+```
+
+**Output**:
+```
+⏱️ LATENCY: Database Query took 50ms.
+```
+
+### 9. Debug Function
+
+**Description**: Logs detailed messages for debugging purposes, helping developers trace and identify issues during development.
+
+**Function Declaration**:
+```typescript
+function debug(title: string, ...messages: (string | (() => void))[], condition?: boolean): void;
+```
+
+**Example Usage**:
+
+**Basic Debug Logging**:
+```javascript
+import { debug } from 'logfy-x';
+
+// Example of usage
+debug('Initialization', 'Starting the initialization process...', 'Loading configurations', 'Services initialized');
+```
+
+**Output**:
+```
+🐞 DEBUG: Initialization
+  > Starting the initialization process...
+  > Loading configurations
+  > Services initialized
+```
+
+**Execution Time Measurement**:
+```javascript
+import { debug } from 'logfy-x';
+
+// Example of usage
+debug('Database Query', () => {
+  // Simulate a database query
+});
+```
+
+**Output**:
+```
+🐞 DEBUG: Database Query completed in 50ms
+```
+
+**Error Logging**:
+```javascript
+import { debug } from 'logfy-x';
+
+// Example of usage
+debug('Faulty Operation', () => {
+  // Simulate an operation that throws an error
+});
+```
+
+**Output**:
+```
+🐞 DEBUG: Faulty Operation failed with error: Something went wrong!
+```
+
+**Conditional Logging**:
+```javascript
+import { debug } from 'logfy-x';
+
+// Example of usage
+debug('Conditioned Operation', () => {
+  // This operation runs only if the condition is true.
+}, false); // This won't log anything
+```
+
+**Output**:
+No output, because the condition was false.
+
+**Stack Trace Logging**:
+```javascript
+import { debug } from 'logfy-x;
+
+// Example of usage
+debug('Faulty Operation', () => {
+  // Simulate an operation that throws an error
+});
+```
+
+**Output**:
+```
+🐞 DEBUG: Faulty Operation failed with error: Something went wrong!
+<stack trace here>
+```
+
+**Contextual Information Logging**:
+```javascript
+import { debug } from 'logfy-x';
+
+// Example of usage
+debug('Operation with Context', () => {
+  // Simulate an operation that throws an error
+}, { userId: 123, action: 'update' });
+```
+
+**Output**:
+```
+🐞 DEBUG: Operation with Context failed with error: Contextual error
+Context: { userId: 123, action: 'update' }
+```
