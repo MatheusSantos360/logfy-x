@@ -10,6 +10,10 @@ Logfy-X is a powerful terminal logging tool designed to make logging easier, org
 - 💡 **Info Logs**: Displays informative logs with visual highlights for easy identification of important information during program execution.
 - ⚠️ **Warn Logs**: Displays warning logs with visual highlights for easy identification of potential issues during program execution.
 - ❌ **Error Logs**: Displays error logs with visual highlights for easy identification of critical issues during program execution.
+- ✅ **Success Logs**: Displays success logs with visual highlights to celebrate successful operations during program execution.
+- 🧩 **Alignment Function**: Align text to the left, center, or right within the terminal.
+- ⏱️ **Latency Function**: Measure and log latency for different operations.
+- 🐞 **Debug Function**: Log detailed messages for debugging purposes with various logging options.
 
 ## Installation
 
@@ -92,10 +96,11 @@ code(user, { indent: 4 });
   - Adds a 💡 emoji next to the title.
   - Displays the title in bold and blue, followed by the content with indentation.
   - Automatically adds ">" before each message for consistent indentation.
+  - **Inline Option**: Allows displaying logs in a single line for a more compact view.
 
 **Function Declaration**:
 ```typescript
-Info(title: string, ...messages: string[]): void;
+Info(title: string, message: string, inline?: boolean): void;
 ```
 
 **Examples**:
@@ -103,12 +108,10 @@ Info(title: string, ...messages: string[]): void;
 import { Info } from "logfy-x";
 
 // Example 1: Single Item
-Info("Startup", "Application started");
+Info("Startup", "Application started"); // Normal
+Info("Startup", "Application started", true); // Inline
 
-// Example 2: Three Items
-Info("Login", "User successfully logged in", "User profile loaded", "Dashboard initialized");
-
-// Example 3: Complex Indentation
+// Example 2: Complex Indentation
 Info("System Overview",
   "Initialization started",
   "> Loading modules",
@@ -131,10 +134,7 @@ Info("System Overview",
 (<bg-blue, bold> "💡 INFO ") (<blue> Startup)
   > Application started
 
-(<bg-blue, bold> "💡 INFO ") (<blue> Login)
-  > User successfully logged in
-  > User profile loaded
-  > Dashboard initialized
+(<bg-blue, bold> "💡 Startup ") (<blue> Application started) // Inline
 
 (<bg-blue, bold> "💡 INFO ") (<blue> System Overview)
   > Initialization started
@@ -161,10 +161,11 @@ Info("System Overview",
   - Adds a ⚠️ emoji next to the title.
   - Displays the title in bold and yellow, followed by the content with indentation.
   - Automatically adds ">" before each message for consistent indentation.
+  - **Inline Option**: Allows displaying logs in a single line for a more compact view.
 
 **Function Declaration**:
 ```typescript
-Warn(title: string, ...messages: string[]): void;
+Warn(title: string, message: string, inline?: boolean): void;
 ```
 
 **Examples**:
@@ -172,12 +173,10 @@ Warn(title: string, ...messages: string[]): void;
 import { Warn } from "logfy-x";
 
 // Example 1: Single Item
-Warn("Low Disk Space", "Less than 10% of disk space remaining");
+Warn("Low Disk Space", "Less than 10% of disk space remaining"); // Normal
+Warn("Low Disk Space", "Less than 10% of disk space remaining", true); // Inline
 
-// Example 2: Three Items
-Warn("API Limit", "Approaching API rate limit", "Current usage: 80%", "Threshold: 90%");
-
-// Example 3: Complex Indentation
+// Example 2: Complex Indentation
 Warn("Performance Warnings",
   "High memory usage detected",
   "> Application X is using 80% of RAM",
@@ -197,10 +196,7 @@ Warn("Performance Warnings",
 (<bg-yellow, bold> "⚠️ WARN ") (<yellow> Low Disk Space)
   > Less than 10% of disk space remaining
 
-(<bg-yellow, bold> "⚠️ WARN ") (<yellow> API Limit)
-  > Approaching API rate limit
-  > Current usage: 80%
-  > Threshold: 90%
+(<bg-yellow, bold> "⚠️ Low Disk Space ") (<yellow> Less than 10% of disk space remaining) // Inline
 
 (<bg-yellow, bold> "⚠️ WARN ") (<yellow> Performance Warnings)
   > High memory usage detected
@@ -224,10 +220,11 @@ Warn("Performance Warnings",
   - Adds a ❌ emoji next to the title.
   - Displays the title in bold and red, followed by the content with indentation.
   - Automatically adds ">" before each message for consistent indentation.
+  - **Inline Option**: Allows displaying logs in a single line for a more compact view.
 
 **Function Declaration**:
 ```typescript
-Error(title: string, ...messages: string[]): void;
+Error(title: string, message: string, inline?: boolean): void;
 ```
 
 **Examples**:
@@ -235,12 +232,10 @@ Error(title: string, ...messages: string[]): void;
 import { Error } from "logfy-x";
 
 // Example 1: Single Item
-Error("Server Crash", "Unexpected server shutdown");
+Error("Server Crash", "Unexpected server shutdown"); // Normal
+Error("Server Crash", "Unexpected server shutdown", true); // Inline
 
-// Example 2: Three Items
-Error("Database Error", "Failed to connect to database", "Connection timed out", "Retrying connection...");
-
-// Example 3: Complex Indentation
+// Example 2: Complex Indentation
 Error("Critical Errors",
   "Database connection failed",
   "> Unable to connect to database server",
@@ -262,10 +257,7 @@ Error("Critical Errors",
 (<bg-red, bold> "❌ ERROR ") (<red> Server Crash)
   > Unexpected server shutdown
 
-(<bg-red, bold> "❌ ERROR ") (<red> Database Error)
-  > Failed to connect to database
-  > Connection timed out
-  > Retrying connection...
+(<bg-red, bold> "❌ Server Crash ") (<red> Unexpected server shutdown) // Inline
 
 (<bg-red, bold> "❌ ERROR ") (<red> Critical Errors)
   > Database connection failed
@@ -290,11 +282,12 @@ Error("Critical Errors",
 - **Success Log**:
   - Adds a ✅ emoji next to the title.
   - Displays the title in bold and green, followed by the content with automatic indentation.
-  - Adds new lines and indentation based on the specified ">" symbols, replacing them with "  > ".
+  - Adds new lines and indentations based on the specified ">" symbols, replacing them with "  > ".
+  - **Inline Option**: Allows displaying logs in a single line for a more compact view.
 
 **Function Declaration**:
 ```typescript
-Success(title: string, ...messages: string[]): void;
+Success(title: string, message: string, inline?: boolean): void;
 ```
 
 **Examples**:
@@ -302,12 +295,10 @@ Success(title: string, ...messages: string[]): void;
 import { Success } from "logfy-x";
 
 // Example 1: Single Item
-Success("Deployment Complete", "The application was successfully deployed.");
+Success("Deployment Complete", "The application was successfully deployed."); // Normal
+Success("Deployment Complete", "The application was successfully deployed.", true); // Inline
 
-// Example 2: Three Items
-Success("Data Processing", "Data was successfully processed.", "Backup created.", "Notifications sent to users.");
-
-// Example 3: Complex Indentation
+// Example 2: Complex Indentation
 Success("Project Milestones Achieved",
   "Phase 1 completed",
   "> Requirements gathered",
@@ -326,10 +317,7 @@ Success("Project Milestones Achieved",
 (<bg-green, bold> "✅ SUCCESS ") (<green> Deployment Complete)
   > The application was successfully deployed.
 
-(<bg-green, bold> "✅ SUCCESS ") (<green> Data Processing)
-  > Data was successfully processed.
-  > Backup created.
-  > Notifications sent to users.
+(<bg-green, bold> "✅ Deployment Complete ") (<green> The application was successfully deployed.) // Inline
 
 (<bg-green, bold> "✅ SUCCESS ") (<green> Project Milestones Achieved)
   > Phase 1 completed
@@ -468,7 +456,7 @@ No output, because the condition was false.
 
 **Stack Trace Logging**:
 ```javascript
-import { debug } from 'logfy-x;
+import { debug } from 'logfy-x';
 
 // Example of usage
 debug('Faulty Operation', () => {
@@ -497,3 +485,4 @@ debug('Operation with Context', () => {
 🐞 DEBUG: Operation with Context failed with error: Contextual error
 Context: { userId: 123, action: 'update' }
 ```
+
