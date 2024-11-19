@@ -14,6 +14,7 @@ Logfy-X is a powerful terminal logging tool designed to make logging easier, org
 - 🧩 **Alignment Function**: Align text to the left, center, or right within the terminal.
 - ⏱️ **Latency Function**: Measure and log latency for different operations.
 - 🐞 **Debug Function**: Log detailed messages for debugging purposes with various logging options.
+- 🎚️ **Log Level Filtering**: Filter logs by level (VERBOSE, DEBUG, INFO, WARN, ERROR) to control the verbosity of the output.
 
 ## Installation
 
@@ -486,3 +487,30 @@ debug('Operation with Context', () => {
 Context: { userId: 123, action: 'update' }
 ```
 
+### 10. Configuration
+
+You can configure Logfy-X using a `logfy-x.json` file. Here is an example configuration:
+
+```json
+{
+  "logLevel": "INFO",
+  "theme": {
+    "color": "white",
+    "background": "none",
+    "font": "none"
+  }
+}
+```
+
+To generate this configuration file, use the command:
+```bash
+logfy-x init
+```
+
+**Options**
+
+- `logLevel`: Set the logging level. Possible values are `VERBOSE`, `DEBUG`, `INFO`, `WARN`, `ERROR`.
+- `theme`: Customize the theme for log messages.
+  - `color`: The color of the text. Accepts multiple styles from picocolors separated by spaces.
+  - `background`: The background color of the text. Accepts multiple styles from picocolors separated by spaces.
+  - `font`: The font style of the text. Accepts multiple styles from picocolors separated by spaces.
