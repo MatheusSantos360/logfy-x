@@ -30,7 +30,7 @@ npm install logfy-x
 **Description**: Allows customizing the text color, background color, text style, and transforming text to uppercase/lowercase. Logfy-X exports all functionalities of picocolors for even more customization.
 
 **Function Declaration**:
-```typescript
+```ts
 logfy(message: string, options?: { style?: string; }): void;
 ```
 
@@ -74,7 +74,7 @@ logfy("TEXT IN LOWERCASE", { style: "lowercase" });
   - Set custom indentation levels for better formatting.
 
 **Function Declaration**:
-```typescript
+```ts
 code(value: any, options?: { indent?: number; }): void;
 ```
 
@@ -100,7 +100,7 @@ code(user, { indent: 4 });
   - **Inline Option**: Allows displaying logs in a single line for a more compact view.
 
 **Function Declaration**:
-```typescript
+```ts
 Info(title: string, message: string, inline?: boolean): void;
 ```
 
@@ -165,7 +165,7 @@ Info("System Overview",
   - **Inline Option**: Allows displaying logs in a single line for a more compact view.
 
 **Function Declaration**:
-```typescript
+```ts
 Warn(title: string, message: string, inline?: boolean): void;
 ```
 
@@ -224,7 +224,7 @@ Warn("Performance Warnings",
   - **Inline Option**: Allows displaying logs in a single line for a more compact view.
 
 **Function Declaration**:
-```typescript
+```ts
 Error(title: string, message: string, inline?: boolean): void;
 ```
 
@@ -287,7 +287,7 @@ Error("Critical Errors",
   - **Inline Option**: Allows displaying logs in a single line for a more compact view.
 
 **Function Declaration**:
-```typescript
+```ts
 Success(title: string, message: string, inline?: boolean): void;
 ```
 
@@ -337,7 +337,7 @@ Success("Project Milestones Achieved",
 **Description**: Allows you to align text to the left, center, or right within the terminal in a simple and straightforward way.
 
 **Function Declaration**:
-```typescript
+```ts
 align(text: string, alignment: 'left' | 'center' | 'right', width?: number): string;
 ```
 
@@ -366,7 +366,7 @@ This message is left-aligned.
 **Description**: Measures and logs latency for different operations to help identify performance bottlenecks and optimize response times.
 
 **Function Declaration**:
-```typescript
+```ts
 function latency(operationName: string, operation: () => void): void;
 ```
 
@@ -390,7 +390,7 @@ latency('Database Query', () => {
 **Description**: Logs detailed messages for debugging purposes, helping developers trace and identify issues during development.
 
 **Function Declaration**:
-```typescript
+```ts
 function debug(title: string, ...messages: (string | (() => void))[], condition?: boolean): void;
 ```
 
