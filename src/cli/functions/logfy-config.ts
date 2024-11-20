@@ -1,4 +1,5 @@
 import fs from "fs";
+import { commandName, configFileName } from "../../../package.json";
 import { bgRed, blue, bold, red } from "../../index";
 import { type config, configSchema } from "../../types/logfy-x-config.types";
 import { ConfigFileExists } from "./configFileExists";
@@ -9,12 +10,12 @@ let config: config | null = null;
 function getConfig(): config {
   if (!config) {
     if (!ConfigFileExists()) {
-      console.log(`${bgRed(" ❌ " + bold("ERROR "))} ${bold(red("logfy-x.json not found"))}`);
-      console.log(`${red(bold(">"))} You can create a config file using ${blue("`logfy-x init`")}.`);
+      console.log(`${bgRed(" ❌ " + bold("ERROR "))} ${bold(red(configFileName + " not found"))}`);
+      console.log(`${red(bold(">"))} You can create a config file using ${blue(`\`${commandName} init\``)}.`);
       process.exit(1);
     }
 
-    const rawData = fs.readFileSync("logfy-x.json").toString();
+    const rawData = fs.readFileSync(configFileName).toString();
     config = JSON.parse(rawData);
     const result = configSchema.safeParse(config);
 

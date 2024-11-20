@@ -1,7 +1,7 @@
 import { writeFile } from "fs";
 import path from "path";
+import { configFileName } from "../../../package.json";
 import logfy, { bgGreen, bgRed, bold, green, red } from "../../index";
-import { configFileName } from "../../types/config.json";
 import configFile from "../config.json";
 import { ConfigFileExists } from "./configFileExists";
 

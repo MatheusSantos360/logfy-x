@@ -5,21 +5,24 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "configFileName": "logfy-x.json",
+  "commandName": "logfy-x",
   "bin": {
     "logfy-x": "./dist/cli/index.js"
   },
   "scripts": {
     "start": "tsx src/playground.ts",
+    "cli": "tsx src/cli/index.ts",
     "dev": "tsx watch src/playground.ts",
     "dev:cli": "tsx watch src/cli/index.ts",
-    "cli": "tsx src/cli/index.ts",
     "lint": "eslint",
     "build": "tsup src/index.ts --format cjs,esm --dts && tsup src/cli/index.ts --format cjs --out-dir dist/cli",
     "test": "vitest --exclude tests/cli",
-    "test:cli": "vitest tests/cli",
-    "test:all": "vitest",
+    "test:cli": "vitest run tests/cli",
+    "test:cli:dev": "vitest tests/cli",
+    "test:all": "pnpm run test run; pnpm run test:cli",
     "release": "pnpm run build && changeset publish",
-    "verify": "pnpm run start && pnpm run lint && pnpm run test run && pnpm run build && rm -rf ./dist"
+    "verify": "pnpm run start && pnpm run lint && pnpm run test:all run && pnpm run build && rm -rf ./dist"
   },
   "repository": {
     "type": "git",
