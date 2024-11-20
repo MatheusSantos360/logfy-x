@@ -1,12 +1,7 @@
-import { readdirSync } from "fs";
-import { configFileName } from "../../types/config.json";
+import { existsSync } from "fs";
+import path from "path";
+import { configFileName } from "../../../package.json";
 
 export const ConfigFileExists = (): boolean => {
-  const dir = readdirSync(process.cwd());
-
-  if (dir.includes(configFileName)) {
-    return true;
-  }
-
-  return false;
+  return existsSync(path.resolve(process.cwd(), configFileName));
 };
