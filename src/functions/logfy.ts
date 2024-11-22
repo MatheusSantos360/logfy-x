@@ -1,4 +1,4 @@
-import { getConfig } from "../cli/functions/logfy-config";
+import { getConfig } from "../cli/functions/getConfig";
 import { options } from "../types/logfy.types";
 import { addBgStyles } from "./utils/addBgStyles";
 import { addFontStyles } from "./utils/addFontStyles";

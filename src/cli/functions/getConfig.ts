@@ -16,7 +16,14 @@ function getConfig(): config {
     }
 
     const rawData = fs.readFileSync(configFileName).toString();
-    config = JSON.parse(rawData);
+
+    try {
+      config = JSON.parse(rawData);
+    } catch {
+      console.log(`${bgRed(" ❌ " + bold("ERROR "))} ${bold(red("Invalid JSON format in " + configFileName))}`);
+      process.exit(1);
+    }
+
     const result = configSchema.safeParse(config);
 
     if (result.error?.errors) {
@@ -30,4 +37,8 @@ function getConfig(): config {
 
 export { getConfig };
 
-// test
+export const setConfig = (value: config | null) => {
+  config = value;
+};
+
+// tested

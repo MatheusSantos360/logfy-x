@@ -20,9 +20,8 @@
     "test": "vitest",
     "test:pkg": "vitest --exclude tests/cli",
     "test:cli": "vitest tests/cli",
-    "test:all": "pnpm run test run; pnpm run test:cli",
     "release": "pnpm run build && changeset publish",
-    "verify": "pnpm run start && pnpm run lint && pnpm run test:all run && pnpm run build && rm -rf ./dist"
+    "verify": "pnpm run start && pnpm run lint && pnpm run test run && pnpm run build && rm -rf ./dist"
   },
   "repository": {
     "type": "git",
