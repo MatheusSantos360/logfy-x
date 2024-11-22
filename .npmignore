@@ -4,3 +4,5 @@ tests/
 src/
 eslint.config.mjs
 tsconfig.json
+logfy-x.json
+logfy-x.md
