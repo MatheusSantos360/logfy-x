@@ -1,7 +1,7 @@
 import { config, styleProps } from "../../types/logfy-x-config.types";
 import { getNestedValue } from "./getNestedValue";
 
-export const styleConfig = (config: config): string => {
+export const getStyleFromConfig = (config: config): string => {
   let styles: string = "";
 
   styleProps.forEach((styleProp) => {
@@ -16,5 +16,3 @@ export const styleConfig = (config: config): string => {
 
   return styles.trim();
 };
-
-// test

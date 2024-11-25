@@ -2,7 +2,7 @@ import { getConfig } from "../cli/functions/getConfig";
 import { options } from "../types/logfy.types";
 import { addBgStyles } from "./utils/addBgStyles";
 import { addFontStyles } from "./utils/addFontStyles";
-import { styleConfig } from "./utils/styleConfig";
+import { getStyleFromConfig } from "./utils/getStyleFromConfig";
 import toCamelCase from "./utils/toCamelCase";
 
 /**
@@ -28,7 +28,7 @@ import toCamelCase from "./utils/toCamelCase";
 // eslint-disable-next-line
 const logfy = (content: any, options?: options): void => {
   const config = getConfig();
-  const configStyles = styleConfig(config);
+  const configStyles = getStyleFromConfig(config);
 
   let styles: string[] = [...configStyles.split(" ")];
 
