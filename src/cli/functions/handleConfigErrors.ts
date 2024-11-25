@@ -57,5 +57,3 @@ export const handleConfigErrors = (parseErrors: ZodIssue[]) => {
     errors.forEach((error) => console.log(`${red(bold("  >"))} ${error}`));
   }
 };
-
-// tested

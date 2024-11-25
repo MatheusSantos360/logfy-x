@@ -40,5 +40,3 @@ export { getConfig };
 export const setConfig = (value: config | null) => {
   config = value;
 };
-
-// tested
