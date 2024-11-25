@@ -13,4 +13,4 @@ export function addBgStyles(styles: string[], content: any) {
   return content;
 }
 
-// test
+// tested
