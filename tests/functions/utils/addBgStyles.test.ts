@@ -19,7 +19,7 @@ describe("addBgStyles", () => {
 
   test("Should add more than one style to the content", () => {
     const bgGreenSpy = vi.spyOn(picocolors, "bgGreen");
-    const bgRedSpy = vi.spyOn(picocolors, "bgGreen");
+    const bgRedSpy = vi.spyOn(picocolors, "bgRed");
     const content = "My content.";
     const styles = ["bgGreen", "bgRed"];
 
@@ -29,7 +29,7 @@ describe("addBgStyles", () => {
     expect(bgRedSpy).toHaveBeenCalledOnce();
 
     expect(bgGreenSpy).toHaveBeenCalledWith(content);
-    expect(bgRedSpy).toHaveBeenCalledWith(content);
+    expect(bgRedSpy).toHaveBeenCalledWith(expect.stringContaining(content));
 
     expect(result).toContain(content);
     expect(result).not.toBe(content);
