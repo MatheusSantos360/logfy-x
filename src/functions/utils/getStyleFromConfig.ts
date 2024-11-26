@@ -1,8 +1,8 @@
 import { config, styleProps } from "../../types/logfy-x-config.types";
 import { getNestedValue } from "./getNestedValue";
 
-export const getStyleFromConfig = (config: config): string => {
-  let styles: string = "";
+export const getStyleFromConfig = (config: config): string[] => {
+  const styles: string[] = [];
 
   styleProps.forEach((styleProp) => {
     const props = styleProp.split(".");
@@ -10,9 +10,9 @@ export const getStyleFromConfig = (config: config): string => {
     const value = getNestedValue(config, props);
 
     if (value !== undefined && value !== null) {
-      styles += `${value} `;
+      styles.push(value);
     }
   });
 
-  return styles.trim();
+  return styles
 };

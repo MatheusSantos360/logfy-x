@@ -30,7 +30,7 @@ const logfy = (content: any, options?: options): void => {
   const config = getConfig();
   const configStyles = getStyleFromConfig(config);
 
-  let styles: string[] = [...configStyles.split(" ")];
+  let styles: string[] = [...configStyles];
 
   styles = styles.filter((style) => style !== "none");
 
@@ -69,4 +69,3 @@ const logfy = (content: any, options?: options): void => {
 export default logfy;
 
 // test - refactor
-// ! - new colors
