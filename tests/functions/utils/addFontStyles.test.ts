@@ -1,10 +1,10 @@
-import picocolors from "picocolors";
 import { describe, expect, test, vi } from "vitest";
 import { addFontStyles } from "../../../src/functions/utils/addFontStyles";
+import { logfyxColors } from "../../../src/functions/utils/logfyxColors";
 
 describe("addFontStyles", () => {
   test("Should a style to the content", () => {
-    const greenSpy = vi.spyOn(picocolors, "green");
+    const greenSpy = vi.spyOn(logfyxColors, "green");
     const content = "My content.";
     const styles = ["green"];
 
@@ -18,8 +18,8 @@ describe("addFontStyles", () => {
   });
 
   test("Should add more than one style to the content", () => {
-    const greenSpy = vi.spyOn(picocolors, "green");
-    const underlineSpy = vi.spyOn(picocolors, "underline");
+    const greenSpy = vi.spyOn(logfyxColors, "green");
+    const underlineSpy = vi.spyOn(logfyxColors, "underline");
     const content = "My content.";
     const styles = ["green", "underline"];
 
@@ -36,8 +36,8 @@ describe("addFontStyles", () => {
   });
 
   test("Should not execute functions that are bg styles", () => {
-    const yellowSpy = vi.spyOn(picocolors, "yellow");
-    const bgGreenSpy = vi.spyOn(picocolors, "bgGreen");
+    const yellowSpy = vi.spyOn(logfyxColors, "yellow");
+    const bgGreenSpy = vi.spyOn(logfyxColors, "bgGreen");
 
     const content = "My content.";
     const styles = ["yellow", "bgGreen"];
@@ -45,9 +45,9 @@ describe("addFontStyles", () => {
     const result = addFontStyles(styles, content);
 
     expect(yellowSpy).toHaveBeenCalled();
-    
+
     expect(bgGreenSpy).not.toHaveBeenCalled();
-    
+
     expect(result).toContain(content);
     expect(result).not.toBe(content);
   });

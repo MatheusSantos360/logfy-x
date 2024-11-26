@@ -3,7 +3,7 @@ import { getStyleFromConfig } from "../../../src/functions/utils/getStyleFromCon
 import { config } from "../../../src/types/logfy-x-config.types";
 
 describe("getStyleFromConfig", () => {
-  test("Should return a string containing styles separated by spaces", () => {
+  test("Should return an array containig styles from config", () => {
     const mockConfig: config = {
       theme: {
         color: "blue",
@@ -13,6 +13,6 @@ describe("getStyleFromConfig", () => {
     };
 
     const result = getStyleFromConfig(mockConfig);
-    expect(result).toBe("blue bg-red black");
+    expect(result).toStrictEqual(["blue", "bg-red", "black"]);
   });
 });
