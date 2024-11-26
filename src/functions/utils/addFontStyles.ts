@@ -6,7 +6,8 @@ export function addFontStyles(styles: string[], content: any) {
 
   fontStyles.forEach((style) => {
     const styleFunction = picocolors[style as keyof typeof picocolors];
-    if (styleFunction && typeof styleFunction === "function") {
+    
+    if (typeof styleFunction === "function") {
       content = styleFunction(content);
     }
   });
