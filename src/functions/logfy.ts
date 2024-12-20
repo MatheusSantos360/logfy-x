@@ -25,7 +25,7 @@ import toCamelCase from "./utils/toCamelCase";
  * logfy("My content", { style: "-red -bold" });
  */
 // eslint-disable-next-line
-const logfy = (content: any, options?: options): void => {
+export const logfy = (content: any, options?: options): void => {
   const config = getConfig();
 
   let styles: string[] = [...config.styles.split(" ")];
@@ -65,5 +65,3 @@ const logfy = (content: any, options?: options): void => {
 };
 
 export default logfy;
-
-// test - refactor

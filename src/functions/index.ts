@@ -1,1 +1,2 @@
-export { default as logfy } from './logfy';
+export { logfy } from "./logfy";
+export { info} from "./info";

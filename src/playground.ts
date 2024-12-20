@@ -1,3 +1,3 @@
-import logfy from "./index";
+import { info } from "./index";
 
-logfy("Content", { style: "" });
+info("Hello?", ["opa", "asasas", ["asas"]]);
