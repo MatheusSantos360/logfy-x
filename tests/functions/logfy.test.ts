@@ -35,7 +35,7 @@ describe("logfy()", () => {
     const consoleSpy = vi.spyOn(console, "log").mockImplementation(() => {});
     const whiteSpy = vi.spyOn(logfyxColors, "white");
     const content = "Styled text";
-    const options = { style: "-white" };
+    const options = { style: "-red -underline" };
 
     logfy(content, options);
 

@@ -1,7 +1,3 @@
 {
-  "theme": {
-    "color": "white",
-    "background": "none",
-    "font": "none"
-  }
+  "styles": "red underline"
 }

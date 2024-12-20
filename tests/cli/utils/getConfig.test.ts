@@ -129,5 +129,3 @@ describe("getConfig", () => {
     expect(exitSpy).toHaveBeenCalledWith(1);
   });
 });
-
-// expect(logSpy).toHaveBeenCalled()
