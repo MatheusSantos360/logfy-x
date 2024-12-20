@@ -1,3 +1,3 @@
-import { info } from "./index";
+import { warn } from "./index";
 
-info("Hello?", "Só bala");
+warn("Hello?", "warn message");

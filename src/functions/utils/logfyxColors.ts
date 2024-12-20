@@ -8,8 +8,8 @@ export const logfyxColors = {
   pink: (input: input) => `\u001b[38;2;255;105;180m${input}\u001b[0m`,
   bgPink: (input: input) => `\u001b[48;2;255;105;180m${input}\u001b[0m`,
 
-  orange: (input: input) => `\u001b[38;2;255;165;0m${input}\u001b[0m`,
-  bgOrange: (input: input) => `\u001b[48;2;255;165;0m${input}\u001b[0m`,
+  orange: (input: input) => `\u001b[38;2;255;195;77m${input}\u001b[0m`,
+  bgOrange: (input: input) => `\u001b[48;2;255;195;77m${input}\u001b[0m`,  
 
   ...picocolors,
 };

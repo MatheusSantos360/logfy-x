@@ -5,7 +5,7 @@ export const formatNestedMessages = (messages: (string | string[])[], level: num
 
   messages.forEach((msg) => {
     if (typeof msg === "string") {
-      formattedMessages += formatMessage(msg, level);
+      formattedMessages += formatMessage(msg, level, "orange");
     } else if (Array.isArray(msg)) {
       formattedMessages += formatNestedMessages(msg, level + 1);
     }
