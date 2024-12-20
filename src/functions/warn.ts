@@ -27,6 +27,6 @@ export const warn = (title: string, messages: string | (string | string[])[]) =>
 
   let warn = `${logfyxColors.bgOrange(bold(" ⚠️  WARN "))} ${logfyxColors.orange(title)}\n`;
 
-  warn += formatNestedMessages(messages);
+  warn += formatNestedMessages(messages, 0, "orange");
   console.log(warn);
 };

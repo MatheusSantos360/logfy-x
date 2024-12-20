@@ -26,6 +26,6 @@ export const info = (title: string, messages: string | (string | string[])[]) =>
 
   let info = `${bgBlue(bold(" ℹ️  INFO "))} ${blue(title)}\n`;
 
-  info += formatNestedMessages(messages);
+  info += formatNestedMessages(messages, 0, "blue");
   console.log(info);
 };

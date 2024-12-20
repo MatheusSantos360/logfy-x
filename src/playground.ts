@@ -1,3 +1,3 @@
-import { warn } from "./index";
+import { error } from "./index";
 
-warn("Hello?", "warn message");
+error("Hello?", ["error message"]);
