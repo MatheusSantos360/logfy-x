@@ -1,5 +1,11 @@
 # logfy-x
 
+## 1.0.0
+
+### Major Changes
+
+- 1f5701c: The launch of the first major version of Logfy-X with the initial features.
+
 ## 0.1.0
 
 ### Minor Changes
