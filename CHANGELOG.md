@@ -1,5 +1,11 @@
 # logfy-x
 
+## 1.0.1
+
+### Patch Changes
+
+- dc0424a: add updated documentation
+
 ## 1.0.0
 
 ### Major Changes
