@@ -1,5 +1,11 @@
 # logfy-x
 
+## 1.0.2
+
+### Patch Changes
+
+- f125a90: fix: logfy-x CLI errors
+
 ## 1.0.1
 
 ### Patch Changes
