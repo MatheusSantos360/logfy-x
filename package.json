@@ -16,7 +16,7 @@
     "dev": "tsx watch src/playground.ts",
     "dev:cli": "tsx watch src/cli/index.ts",
     "lint": "eslint",
-    "build": "tsup src/index.ts --format cjs,esm --dts && tsup src/cli/index.ts --format cjs --out-dir dist/cli",
+    "build": "tsup",
     "test": "vitest",
     "test:pkg": "vitest --exclude tests/cli",
     "test:cli": "vitest tests/cli",
