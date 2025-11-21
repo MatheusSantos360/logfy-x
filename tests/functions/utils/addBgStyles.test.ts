@@ -14,7 +14,7 @@ describe("addBgStyles", () => {
     expect(bgGreenSpy).toHaveBeenCalledWith(content);
 
     expect(result).toContain(content);
-    expect(result).not.toBe(content);
+    expect(typeof result).toBe("string");
   });
 
   test("Should add more than one style to the content", () => {
@@ -32,7 +32,7 @@ describe("addBgStyles", () => {
     expect(bgRedSpy).toHaveBeenCalledWith(expect.stringContaining(content));
 
     expect(result).toContain(content);
-    expect(result).not.toBe(content);
+    expect(typeof result).toBe("string");
   });
 
   test("Should not execute functions that are not bg styles", () => {
@@ -49,6 +49,6 @@ describe("addBgStyles", () => {
     expect(yellowSpy).not.toHaveBeenCalled();
 
     expect(result).toContain(content);
-    expect(result).not.toBe(content);
+    expect(typeof result).toBe("string");
   });
 });

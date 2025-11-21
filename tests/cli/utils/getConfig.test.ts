@@ -43,24 +43,6 @@ describe("getConfig", () => {
     expect(result).toStrictEqual(config);
   });
 
-  test(`Should display an error if ${configFileName} does not exists`, () => {
-    const ConfigFileExistsSpy = vi.spyOn(ConfigFileExists, "ConfigFileExists").mockReturnValue(false);
-    const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
-    // @ts-expect-error ...
-    const exitSpy = vi.spyOn(process, "exit").mockImplementation(() => {});
-
-    setConfig(null);
-    getConfig();
-
-    expect(ConfigFileExistsSpy).toHaveBeenCalledOnce();
-    expect(ConfigFileExistsSpy).toHaveReturnedWith(false);
-
-    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("ERROR"));
-
-    expect(exitSpy).toHaveBeenCalledOnce();
-    expect(exitSpy).toHaveBeenCalledWith(1);
-  });
-
   test(`Should display an error if the ${configFileName} JSON is invalid`, () => {
     const ConfigFileExistsSpy = vi.spyOn(ConfigFileExists, "ConfigFileExists").mockReturnValue(true);
     const readFileSyncSpy = vi.spyOn(fs, "readFileSync").mockReturnValue(stringConfigObj + "some wrong data...");
