@@ -1,5 +1,11 @@
 # logfy-x
 
+## 1.0.3
+
+### Patch Changes
+
+- efbb703: optional logfy-x.json
+
 ## 1.0.2
 
 ### Patch Changes
